@@ -2,7 +2,7 @@
 
 # To find device type on terminal: ip link show
 # The one that is UP is the one in use
-# Protocol, tcp, udp, etc.
+# Protocol, tcp, udp.
 # produces an .out file in the same dir
 
 device=$1
