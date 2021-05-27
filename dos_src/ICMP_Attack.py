@@ -20,4 +20,4 @@ def ping(victim_ip, targetedPort, numOfPackages):
 if __name__ == "__main__":
     """Cmd args: targetIp, TargetedPort, NumberOfPackagesToSend"""
     print("Preparing to ping victim PC")
-    ping(sys.argv[1], int(sys.argv[2]), int(sys.argv[3]))
+    ping(sys.argv[1], sys.argv[2], int(sys.argv[3]))
