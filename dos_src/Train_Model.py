@@ -145,18 +145,16 @@ print(X_train.shape, X_test.shape)
 print(y_train.shape, y_test.shape)
 
 clfr = RandomForestClassifier(n_estimators = 30)
-start_time = time.time()
 clfr.fit(X_train, y_train.values.ravel())
-end_time = time.time()
-print("Training time: ", end_time-start_time)
 
-start_time = time.time()
-y_test_pred = clfr.predict(X_train)
-end_time = time.time()
-print("Testing time: ", end_time-start_time)
 
-print("Train score is:", clfr.score(X_train, y_train))
-print("Test score is:", clfr.score(X_test, y_test))
+#tart_time = time.time()
+#y_test_pred = clfr.predict(X_train)
+#end_time = time.time()
+#print("Testing time: ", end_time-start_time)
+
+#print("Train score is:", clfr.score(X_train, y_train))
+#print("Test score is:", clfr.score(X_test, y_test))
 
 filename = "TrainnedModel.sav"
 pickle.dump(clfr, open(filename, 'wb'))

