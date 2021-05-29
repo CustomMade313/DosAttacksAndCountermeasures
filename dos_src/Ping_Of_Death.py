@@ -16,7 +16,7 @@ def random_address_generator():
     return (addr[0] + d + addr[1] + d + addr[2] + d + addr[3])
 
 
-def ping(targetedIp, targetedPort, duration):
+def ping(targetedIp, duration):
     spoofed_ip = random_address_generator()
     for _ in range(duration):
         spoofed_ip = random_address_generator()
