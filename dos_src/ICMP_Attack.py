@@ -20,6 +20,6 @@ def ping(target_ip, targetedPort, duration):
         
 
 if __name__ == "__main__":
-    """Cmd args: targetIp, TargetedPort, duration"""
+    """Cmd args: targetIp, duration"""
     print("Preparing to ping victim PC")
-    ping(sys.argv[1], int(sys.argv[2]), int(sys.argv[3]))
+    ping(sys.argv[1] , int(sys.argv[2]))

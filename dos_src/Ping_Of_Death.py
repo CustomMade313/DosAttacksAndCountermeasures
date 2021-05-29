@@ -29,8 +29,8 @@ if __name__ == "__main__":
     # The Ping of death algorithm works
     # by generating a random spoofed ip address
     # and then sending a big IPV4 packet to the targeted ip 
-    """Cmd args: targetIp, TargetedPort, duration"""
+    """Cmd args: targetIp,  duration"""
     print("Preparing to ping victim PC")
-    ping(sys.argv[1], int(sys.argv[2]), int(sys.argv[3]))
+    ping(sys.argv[1], int(sys.argv[2]))
 
 
